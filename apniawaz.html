@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Join a channel on Apni Awaz</title>
+<title>Join a channel on myVoice</title>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; text-align: center; padding: 32px 20px; }
   .card { max-width: 520px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 28px 22px; }
@@ -17,22 +17,22 @@
 </head>
 <body>
 <div class="card">
-  <h1>Apni Awaz</h1>
+  <h1>myVoice</h1>
   <p id="intro">You have been invited to a voice channel.</p>
   <div class="channel" id="channelBox" style="display:none"></div>
   <p id="noChannel" style="display:none">No channel was included in this link. Open the app and enter the channel name your friend shared with you.</p>
-  <a class="btn" id="openBtn" href="#">Open in Apni Awaz</a>
-  <a class="btn secondary" id="downloadBtn" href="https://gofile.io/d/41HoA62z">Download Apni Awaz app</a>
+  <a class="btn" id="openBtn" href="#">Open in myVoice</a>
+  <a class="btn secondary" id="downloadBtn" href="https://gofile.io/d/AxUh2jDb">Download myVoice app</a>
   <h2>Instructions</h2>
   <ol>
-    <li>Tap “Download Apni Awaz app” above and install it.</li>
+    <li>If myVoice is already installed, tap “Open in myVoice” above and go to step 4. Otherwise, tap “Download myVoice app” above and install it.</li>
     <li>If Play Protect warns you, do not worry. This app is not on Play Store, so Android warns for every app installed this way. Tap “More details”, then “Install anyway”.</li>
-    <li>Open Apni Awaz and allow Microphone when it asks.</li>
+    <li>Open myVoice and allow Microphone when it asks.</li>
     <li>Enter your name and the channel name shown on this page.</li>
     <li>Tap “Join”.</li>
     <li>Hold the button to talk, release it to listen. You can also use “Tap to Talk” and “Tap to Stop”.</li>
   </ol>
-  <p style="text-align:left; line-height:1.7;">Apni Awaz asks only for Microphone (to talk) and Internet (to connect) — no contacts, SMS, location, camera or files. No account is needed.</p>
+  <p style="text-align:left; line-height:1.7;">myVoice asks only for Microphone (to talk) and Internet (to connect) — no contacts, SMS, location, camera or files. No account is needed.</p>
   <p class="note">Please share channel links only privately — anyone with the channel name can join.</p>
 </div>
 <script>
@@ -44,7 +44,7 @@
     if (channel) {
       box.textContent = channel;
       box.style.display = 'block';
-      openBtn.href = 'apniawaz://join?channel=' + encodeURIComponent(channel);
+      openBtn.href = 'myvoice://join?channel=' + encodeURIComponent(channel);
     } else {
       document.getElementById('noChannel').style.display = 'block';
       openBtn.style.display = 'none';
