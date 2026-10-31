@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join a channel on Apni Awaz</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; text-align: center; padding: 32px 20px; }
+  .card { max-width: 520px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 28px 22px; }
+  h1 { color: #2dd4bf; font-size: 26px; margin: 0 0 12px; }
+  .channel { font-size: 22px; font-weight: bold; color: #ffffff; word-break: break-all; background: #0f172a; border-radius: 10px; padding: 12px; margin: 16px 0; }
+  .btn { display: block; margin: 12px auto; padding: 14px 20px; border-radius: 10px; font-size: 18px; font-weight: bold; text-decoration: none; color: #ffffff; background: #0d9488; max-width: 360px; }
+  .btn.secondary { background: #334155; }
+  ol { text-align: left; line-height: 1.7; }
+  .note { font-size: 14px; color: #94a3b8; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Apni Awaz</h1>
+  <p id="intro">You have been invited to a voice channel.</p>
+  <div class="channel" id="channelBox" style="display:none"></div>
+  <p id="noChannel" style="display:none">No channel was included in this link. Open the app and enter the channel name your friend shared with you.</p>
+  <a class="btn" id="openBtn" href="#">Open in Apni Awaz</a>
+  <a class="btn secondary" id="downloadBtn" href="https://gofile.io/d/41HoA62z">Download Apni Awaz app</a>
+  <h2>Play Protect warning — do not worry</h2>
+  <p style="text-align:left; line-height:1.7;">Android shows a warning for every app installed outside Play Store. This app is sideload-only by design, so Play Protect may warn you. Tap “More details” and then “Install anyway” if it appears. Apni Awaz asks only for Microphone (to talk) and Internet (to connect) — no contacts, SMS, location, camera or files.</p>
+  <h2>How to join manually</h2>
+  <ol>
+    <li>Install the app using the download button above.</li>
+    <li>Open Apni Awaz.</li>
+    <li>Enter your name and the channel name shown on this page.</li>
+    <li>Tap Join, then hold to talk.</li>
+  </ol>
+  <p class="note">Please share channel links only privately — anyone with the channel name can join.</p>
+</div>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var channel = params.get('channel') || '';
+    var box = document.getElementById('channelBox');
+    var openBtn = document.getElementById('openBtn');
+    if (channel) {
+      box.textContent = channel;
+      box.style.display = 'block';
+      openBtn.href = 'apniawaz://join?channel=' + encodeURIComponent(channel);
+    } else {
+      document.getElementById('noChannel').style.display = 'block';
+      openBtn.style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
