@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>myVoice — Join a voice channel</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; text-align: center; padding: 32px 20px; }
+  .card { max-width: 520px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 28px 22px; }
+  h1 { color: #2dd4bf; font-size: 28px; margin: 0 0 8px; }
+  .sub { color: #94a3b8; margin: 0 0 16px; }
+  .channel { font-size: 22px; font-weight: bold; color: #ffffff; word-break: break-all; background: #0f172a; border-radius: 10px; padding: 12px; margin: 16px 0; }
+  .btn { display: block; margin: 12px auto; padding: 14px 20px; border-radius: 10px; font-size: 18px; font-weight: bold; text-decoration: none; color: #ffffff; background: #0d9488; max-width: 360px; }
+  .btn.secondary { background: #334155; }
+  ol { text-align: left; line-height: 1.7; }
+  .note { font-size: 14px; color: #94a3b8; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>myVoice</h1>
+  <p class="sub">Private group voice — no account, no registration.</p>
+  <p id="intro">You have been invited to a voice channel.</p>
+  <div class="channel" id="channelBox" style="display:none"></div>
+  <p id="noChannel" style="display:none">No channel was included in this link. Open the app and enter the channel name your friend shared with you.</p>
+  <p id="autoOpenMsg" style="display:none">Opening myVoice… If it does not open, tap “Open in myVoice” below.</p>
+  <a class="btn" id="openBtn" href="#">Open in myVoice</a>
+  <a class="btn secondary" id="downloadBtn" href="https://tnabeel.github.io/mysteries-unveiled/myvoice.apk">Download myVoice app</a>
+  <p class="note">Direct download from this page — version 3.3, latest.</p>
+  <h2>Instructions</h2>
+  <ol>
+    <li>If myVoice is already installed, this link will try to open it automatically. If it does not open, tap “Open in myVoice” above and go to step 4. Otherwise, tap “Download myVoice app” above and install it directly from this page.</li>
+    <li>If Play Protect warns you, do not worry. This app is not on Play Store, so Android warns for every app installed this way. Tap “More details”, then “Install anyway”.</li>
+    <li>Open myVoice and allow Microphone when it asks.</li>
+    <li>Enter your name and the channel name shown on this page.</li>
+    <li>Tap “Join”.</li>
+    <li>Hold the button to talk, release it to listen. You can also use “Tap to Talk” and “Tap to Stop”.</li>
+    <li>Your microphone is used only while you are talking. When you are not talking, myVoice releases the microphone, so you can also send WhatsApp voice messages.</li>
+  </ol>
+  <p style="text-align:left; line-height:1.7;">myVoice asks only for Microphone (to talk) and Internet (to connect) — no contacts, SMS, location, camera or files. No account is needed.</p>
+  <p class="note">Please share channel links only privately — anyone with the channel name can join.</p>
+</div>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var channel = params.get('channel') || '';
+    var box = document.getElementById('channelBox');
+    var openBtn = document.getElementById('openBtn');
+    if (channel) {
+      box.textContent = channel;
+      box.style.display = 'block';
+      openBtn.href = 'myvoice://join?channel=' + encodeURIComponent(channel);
+      document.getElementById('autoOpenMsg').style.display = 'block';
+      setTimeout(function () { window.location.href = openBtn.href; }, 500);
+    } else {
+      document.getElementById('noChannel').style.display = 'block';
+      openBtn.style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
