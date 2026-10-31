@@ -21,11 +21,12 @@
   <p id="intro">You have been invited to a voice channel.</p>
   <div class="channel" id="channelBox" style="display:none"></div>
   <p id="noChannel" style="display:none">No channel was included in this link. Open the app and enter the channel name your friend shared with you.</p>
+  <p id="autoOpenMsg" style="display:none">Opening myVoice… If it does not open, tap “Open in myVoice” below.</p>
   <a class="btn" id="openBtn" href="#">Open in myVoice</a>
-  <a class="btn secondary" id="downloadBtn" href="https://gofile.io/d/AxUh2jDb">Download myVoice app</a>
+  <a class="btn secondary" id="downloadBtn" href="https://tnabeel.github.io/mysteries-unveiled/myvoice.apk">Download myVoice app</a>
   <h2>Instructions</h2>
   <ol>
-    <li>If myVoice is already installed, tap “Open in myVoice” above and go to step 4. Otherwise, tap “Download myVoice app” above and install it.</li>
+    <li>If myVoice is already installed, this link will try to open it automatically. If it does not open, tap “Open in myVoice” above and go to step 4. Otherwise, tap “Download myVoice app” above and install it from this page.</li>
     <li>If Play Protect warns you, do not worry. This app is not on Play Store, so Android warns for every app installed this way. Tap “More details”, then “Install anyway”.</li>
     <li>Open myVoice and allow Microphone when it asks.</li>
     <li>Enter your name and the channel name shown on this page.</li>
@@ -45,6 +46,8 @@
       box.textContent = channel;
       box.style.display = 'block';
       openBtn.href = 'myvoice://join?channel=' + encodeURIComponent(channel);
+      document.getElementById('autoOpenMsg').style.display = 'block';
+      setTimeout(function () { window.location.href = openBtn.href; }, 500);
     } else {
       document.getElementById('noChannel').style.display = 'block';
       openBtn.style.display = 'none';
