@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tnabeel.github.io/mysteries-unveiled/sitemap.xml
